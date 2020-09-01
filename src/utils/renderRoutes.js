@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import {statisticsHandler} from  '@utils/statistics'
+import {loadScript} from  '@utils/loadScript'
 import nativeBridge from '@utils/nativeBridge'
 const NativeBridge = nativeBridge.getInstance()
+let _egtk
 
 const beforeEnter=(route) => {//全局路由
     if(route.meta.title){
@@ -13,16 +14,17 @@ const beforeEnter=(route) => {//全局路由
             NativeBridge.handler('setNavbarInfo',true,obj)
         }
     }
-    statisticsHandler('//static1.egou.com/b=p/bi/js&f=alltracker.js', () => {
-        var _egtk = _egtk || {"site": 1};
-        (function () {
-            let eg = document.createElement('script');
-            eg.type = 'text/javascript';
-            eg.async = true;
-            eg.src = '//static1.egou.com/js/egoutracker.js';
-            let s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(eg, s);
-        })();
+
+    loadScript('//static1.egou.com/b=p/bi/js&f=alltracker.js', () => {
+        _egtk = _egtk || {"site": 1};
+            console.log(_egtk);
+            (function() {
+                if (!_egtk) return;
+                let img = new Image(1, 1);
+                img.src = '//ad.egou.com/track/check.htm?site='+_egtk.site
+                +'&p='+encodeURIComponent(window.location.href)
+                +'&s='+encodeURIComponent(document.referrer);
+            })();
         console.log('统计代码执行')
     })
 

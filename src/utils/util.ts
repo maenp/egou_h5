@@ -96,7 +96,7 @@ export default {
      * @timeout Number 延迟时间
      * @trailing Boolean 是否开启频繁操作延时执行fu函数
      */
-    ThrottleHandler(fn, timeout, trailing) {//节流处理函数
+    ThrottleHandler(fn:Function, timeout:number, trailing:boolean):Function {//节流处理函数
         let startTime = 0
         let timer
         return function () {//闭包  返回一个函数，调用时需执行会自动调用一次，保险起见最好再手动调用一次 fn
@@ -138,7 +138,7 @@ export default {
             })
         })
     },
-    toTopHandler(that:Element,time:number){
+    toTopHandler(that:Element,time:number){//回到顶部
         let currentScroll = that.scrollTop
         let speed=currentScroll/(time/60)
         let IInterval = setInterval(_=>{
@@ -150,5 +150,14 @@ export default {
                 console.log('清除');
             }
         },16)
+    },
+    numToWanYuanHandler(num:number,keepNum:number):string|number{
+        let newNum:number|string=num/10000
+        if(newNum>1){
+            newNum=newNum.toFixed(keepNum);
+            return newNum+'万'
+        }else{
+            return num
+        }
     }
 }

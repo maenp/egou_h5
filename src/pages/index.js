@@ -21,3 +21,15 @@ export const noPage  = Loadable({
     loader:()=>import("./noPage/noPage"),
     loading:Loading
 })
+export const myOrder  = Loadable({
+    loader:()=>import("./myOrder"),
+    loading:Loading
+})
+export const effectEx  = Loadable({
+    loader:()=>import("./effectEx"),
+    loading:Loading
+})
+export const customOrder  = Loadable({
+    loader:()=>import("./effectEx/customOrder"),
+    loading:Loading
+})

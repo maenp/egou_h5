@@ -1,0 +1,1 @@
+export  { default as date }  from "./day.png";

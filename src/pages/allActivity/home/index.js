@@ -5,8 +5,7 @@ class Index extends Component {
         return (
             <Contain>
                 <div className="bgBox" ref={"bgBox"} id="map-wrap">
-                    <div className="bg" ref="bg" id="bg">
-                    </div>
+                    <div className="bg" ref="bg" id="bg"></div>
                 </div>
             </Contain>
         );
