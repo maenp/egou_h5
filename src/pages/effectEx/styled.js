@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 export const Container = styled.div`
 background-color:#F1F2F3;
-height:100%;
+min-height:100%;
 width:100%;
 font-size:0.2rem;
 padding:0.08333rem 0.16667rem 0;
@@ -47,21 +47,24 @@ border-radius:0.16667rem;
     line-height:0.4rem;
 }
 .order_info{
-    display:flex;
-    justify-content:space-between;
+    overflow-x:scroll;
+    ul{
+        width:max-content;
+    }
     li{
+        float:left;
+        margin-right:5px;
         height:1.16667rem;
-        width:21.3vw;
+        min-width:21.3vw;
+        width:max-content;
         background-color:#F4F4F4;
         display:flex;
         flex-direction:column;
         justify-content:space-around;
         align-items:center;
         border-radius:0.08333rem;
-        ._info_name{
-
-        }
         ._info_num{
+            padding:0 .1rem;
             span{
                 font-size:0.26667rem;
                 font-weight:800;
@@ -72,6 +75,10 @@ border-radius:0.16667rem;
         color:#Fff;
         background-color:#FFA461;
     }
+}
+#myChart{
+    width:96vw;
+    height:42.66667vw;
 }
 `
 export const TopShop=styled.div`
@@ -150,8 +157,11 @@ export const CustomContainer=styled.div`
         }
     }
 }
+.am-activity-indicator{
+    justify-content:center;
+}
 
-height:100%;
+min-height:100%;
 width:100%;
 background-color:#F1F2F3;
 .head{
@@ -167,6 +177,49 @@ background-color:#F1F2F3;
     }
 }
 .info{
+    overflow-x:scroll;
+    background-color:#FFF;
+    ul{
+        padding:0 .17rem .2rem;
+        width:max-content;
+        overflow:hidden;
+    }
+    li{
+        float:left;
+        margin-right:5px;
+        height:1.333rem;
+        min-width:24vw;
+        /* width:max-content; */
+        background-color:#F4F4F4;
+        display:flex;
+        flex-direction:column;
+        justify-content:space-around;
+        align-items:center;
+        border-radius:0.08333rem;
+        ._info_name{
+            padding:0 .1rem;
+
+        }
+        ._info_num{
+            padding:0 .1rem;
+            span{
+                font-size:0.26667rem;
+                font-weight:800;
+            }
+        }
+    }
+    li:nth-child(2){
+        ._info_num{
+            color:#FFA461;
+        }
+    }
+    li:nth-child(3){
+        ._info_num{
+            color:#FF1403;
+        }
+    }
+}
+/* .info{
     display:flex;
     justify-content:space-between;
     background-color:#FFF;
@@ -198,9 +251,10 @@ background-color:#F1F2F3;
             color:#FF1403;
         }
     }
-}
+} */
 .list{
     margin:0.1rem 0.16667rem;
+
     ul{
         li{
             width: 100%;
@@ -276,11 +330,11 @@ background-color:#F1F2F3;
 }
 `
 export const DateSelect=styled.div`
-height:2.5rem;
+height:38vw;
 display:flex;
 flex-direction:column;
 align-items:center;
-justify-content:center;
+/* justify-content:center; */
 position: relative;
 padding-top:.4rem;
 p{
@@ -290,11 +344,15 @@ p{
     z-index:10
 }
 .selectView{
-    height:70%;
+    height:80%;
     width:100%;
     overflow:hidden;
+    margin-top:.3rem;
     .am-picker{
         height:100%;
+        /* .am-picker-col-content{ */
+            /* top:0.05rem; */
+        /* } */
     }
 }
 `

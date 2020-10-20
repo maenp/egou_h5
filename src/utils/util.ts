@@ -159,5 +159,8 @@ export default {
         }else{
             return num
         }
+    },
+    dateToStringHandler(date,rep='-'){
+        return date.toLocaleDateString().replace(/\//g, rep);
     }
 }

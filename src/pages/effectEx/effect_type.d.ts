@@ -1,32 +1,46 @@
-interface ItopShop{
-    shopName:string
-    orderNum:number
-    orderMoney:number
-    expFx:number
-    id:number
+interface ItopShop {
+    shopName: string
+    orderCount: number
+    orderPrice: number
+    orderFanli: number
+    UNION_CAMPAIGN_ID: number
 }
-interface IorderType{
-    orderStatus:number
-    orderType:string
-    orderNum:number
+interface IorderType {
+    orderStatus: number
+    orderType: string
+    orderNum: number
 }
-interface customOrderState{
-    startDate:any
-    endDate:any
-    customList:customListItem[]
-    customInfo:customInfo
-    selectCustomShow:boolean
+interface customOrderState {
+    startDate: any
+    endDate: any
+    customList: customListItem[]
+    customInfo: customInfo
+    selectCustomShow: boolean
+    reqDate: {
+        startDate: any
+        endDate: any
+    }
 }
-type customInfo={
-    allOrderNum:number
-    expAllOrderMoney:number
-    expAllFxMoney:number
+type customInfo = {
+    orderNum: number
+    orderMoney: number
+    orderFanli: number
+    orderConfirmFanli: number
 }
-type customListItem={
-    orderDate:string
-    orderNum:number
-    orderMoney:number
-    expFx:number
-    payFx:number
-    key:number
+type customListItem = {
+    time: string
+    orderNum: number
+    orderMoney: number
+    orderPrice?: number
+    expFx: number
+    payFx: number
+}
+
+
+interface chartData {
+    [index: number]: chartDataItem[]
+}
+interface chartDataItem {
+    time: string
+    total: number
 }

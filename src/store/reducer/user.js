@@ -31,8 +31,9 @@ export default handleActions({
         return state.updateIn(['n'],(state)=>action.value);
     },
     user_update:(state)=>{
-        return state.updateIn(['userId'],(state)=>NativeBridge.handler('getRuid')||1642297)
-                    .updateIn(['term'],(state)=>NativeBridge.handler('getTerm')||3)
+        return state.updateIn(['term'],(state)=>NativeBridge.handler('getTerm')||3)
                     .updateIn(['deviceId'],(state)=>NativeBridge.handler('getDeviceID')||22435454)
+                    .updateIn(['userId'],(state)=>NativeBridge.handler('getRuid')||100000)//1642297
+                    // .updateIn(['userId'],(state)=>100000)//1642297
     }
 },defaultState)

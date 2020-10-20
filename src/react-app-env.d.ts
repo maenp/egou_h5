@@ -23,4 +23,7 @@ interface Window{
 
     nativeExpressRewardedVideoAdDidClose:any
     Callback:Function
+    eruda:{
+        init:Function
+    }
 }
