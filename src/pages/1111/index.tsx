@@ -143,7 +143,7 @@ function Index() {
       <div className='get_btn' onClick={toTaobao}/>
       <div className='action_btn'>
         <div className="action" onClick={copyTextHandler}>{NativeBridge._isEnv?'分享口令赚易豆':'复制口令领取'}</div>
-        <div className={isTimeOut?"action":""} onClick={()=>{openRaward(isTimeOut)}}>{isTimeOut?'天天开彩蛋':'10.24开始敬请期待'}</div>
+        <div className={isTimeOut?"action":""} onClick={()=>{openRaward(isTimeOut)}}>{isTimeOut?'天天开彩蛋':'10.23开始敬请期待'}</div>
       </div>
       <div className="copyText">
         6fu植这行话￥y2kJc7mVVtl￥转移至氵匋寳或点几链街 https://m.tb.cn/h.40CuODY 至浏.览览.器【2020天猫双11—主会场（满300减40，还能领红I包，最高1111元！）】
