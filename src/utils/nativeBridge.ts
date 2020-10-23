@@ -30,7 +30,7 @@ class NativeBridge {
      * @param {any} param WK可以直接传，其他必须转成JSON格式 
      * @param {[[any]]} oldParam 兼容旧版本的参数 旧版本优先使用这个参数 其他同param 
      */
-    handler(nativeMethod:string, isCallback?:boolean, param?:any, oldParam?:[any]) {//调用函数
+    handler(nativeMethod:string, isCallback?:boolean, param?:any, oldParam?:any[]) {//调用函数
         if (!this._isEnv) return 
         let device = this.device
         

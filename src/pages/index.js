@@ -33,3 +33,7 @@ export const customOrder  = Loadable({
     loader:()=>import("./effectEx/customOrder"),
     loading:Loading
 })
+export const double11  = Loadable({
+    loader:()=>import("./1111"),
+    loading:Loading
+})

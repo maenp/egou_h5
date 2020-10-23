@@ -1,8 +1,10 @@
-import {isTaobaoBindApi} from './../api/publicApi'
+import {isTaobaoBindApi,btnEventApi} from './../api/publicApi'
 import nativeBridge from './nativeBridge'
+import store from './../store'
 const NativeBridge = nativeBridge.getInstance()
+let user=store.getState().user
 export default {
-    daojishi(time:number) {
+    daojishi(time:number) { //time 单位 s
         return new Promise((res, rej) => {
             let addZero = (value) => {
                 return value < 10 ? "0" + value : value;
@@ -138,6 +140,16 @@ export default {
             })
         })
     },
+    toTaobaoHandler(url:string){
+        if(NativeBridge._isEnv){
+            this.isTaobaoBind().then(()=>{
+                NativeBridge.handler('schemes',true,{url})
+            })
+        }else{
+            window.location.href=url
+        }
+        
+    },
     toTopHandler(that:Element,time:number){//回到顶部
         let currentScroll = that.scrollTop
         let speed=currentScroll/(time/60)
@@ -162,5 +174,20 @@ export default {
     },
     dateToStringHandler(date,rep='-'){
         return date.toLocaleDateString().replace(/\//g, rep);
+    },
+    btnEvent(page:string,pos:string){//按钮埋点
+        //@ts-ignore
+        let userInfo=user.toJS()
+        let data={
+            method:"click.data.generate",
+            page,
+            pos,
+            term:2,
+            site:3,
+            ori_site:3,
+            fuid:userInfo.userId,
+            ouid:userInfo.userId,
+        }
+        btnEventApi(data)
     }
 }

@@ -1,4 +1,4 @@
-import {myOrder,effectEx,customOrder} from "@pages";
+import {myOrder,effectEx,customOrder,double11} from "@pages";
 
 export default [
     {
@@ -28,6 +28,15 @@ export default [
         component: customOrder,
         meta: {
             title:'效果报表'
+        },
+    },
+    {
+        key: "1111",
+        path: "/1111",
+        name: "1111",
+        component: double11,
+        meta: {
+            title:'超级红包'
         },
     },
 ]
