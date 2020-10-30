@@ -34,6 +34,10 @@ export const customOrder  = Loadable({
     loading:Loading
 })
 export const double11  = Loadable({
-    loader:()=>import("./1111"),
+    loader:()=>import("./1111/taobao.tsx"),
+    loading:Loading
+})
+export const JDdouble11  = Loadable({
+    loader:()=>import("./1111/JD.tsx"),
     loading:Loading
 })

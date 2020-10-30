@@ -1,11 +1,10 @@
 import React, { useState, useEffect, RefObject } from 'react';
-import { useHistory } from "react-router-dom";
-import { Wrapper ,RuleWrapper} from './styled'
+import { Wrapper ,RuleWrapper } from './styled'
 import util from './../../utils/util'
-import {connect} from 'react-redux'
 import { Modal , Toast} from 'antd-mobile';
 import nativeBridge from './../../utils/nativeBridge'
 import {luckDrawApi} from "./../../api/publicApi"
+import BottomComponent from './../../components/1111/bottom'
 
 const actId = util.getUrlParams(window.location.href).actId ||'1015';  //分享活动id
 const NativeBridge = nativeBridge.getInstance()
@@ -149,6 +148,7 @@ function Index() {
         6fu植这行话￥y2kJc7mVVtl￥转移至氵匋寳或点几链街 https://m.tb.cn/h.40CuODY 至浏.览览.器【2020天猫双11—主会场（满300减40，还能领红I包，最高1111元！）】
       </div>
       <input className="copyInp" ref={copyInp} type="text"/>
+      <BottomComponent jumpPath={'/JD1111'}/>
     </Wrapper>
   )
 }
