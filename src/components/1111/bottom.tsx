@@ -7,12 +7,16 @@ interface IProps{
     term:number
     isToTop?:boolean
     toTopHandler?:()=>void
-    jumpPath:string
+    jumpPath?:string
     type?:string
 }
-function Bottom(props:IProps) {
+// window.onscroll=(e)=>{
+//     console.log(e);
+// }
+function Index(props:IProps) {
     let history = useHistory();
     function toElseHandler() {
+        if(!props.jumpPath)return
         history.push(props.jumpPath);
     }
     const getoAwardCard = () => {//领取返利卡
@@ -23,7 +27,9 @@ function Bottom(props:IProps) {
             {
                 props.isToTop && <div className='toTop' onClick={props.toTopHandler}></div>
             }
-            <div className={props.type==='jd'?'toElse toElse1':'toElse'} onClick={toElseHandler}></div>
+            {
+                props.jumpPath&&<div className={props.type==='jd'?'toElse toElse1':'toElse'} onClick={toElseHandler}></div>
+            }
             <div className='getAwardCard'>
                 吐血补贴,下单先领卡,返上加返
                 <div className='btn' onClick={getoAwardCard}>返利卡入口</div>
@@ -37,4 +43,4 @@ const mapStateToProps = (state) => {
         term: state.user.getIn(['term'])
     }
 }
-export default connect(mapStateToProps)(Bottom);
+export default connect(mapStateToProps)(Index);

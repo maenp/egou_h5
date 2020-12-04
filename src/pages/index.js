@@ -41,3 +41,11 @@ export const JDdouble11  = Loadable({
     loader:()=>import("./1111/JD.tsx"),
     loading:Loading
 })
+export const TaoDouble12  = Loadable({
+    loader:()=>import("./1212/taobao.tsx"),
+    loading:Loading
+})
+export const JDdouble12  = Loadable({
+    loader:()=>import("./1212/JD.tsx"),
+    loading:Loading
+})

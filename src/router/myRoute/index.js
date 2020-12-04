@@ -1,4 +1,6 @@
-import {myOrder,effectEx,customOrder,double11,JDdouble11} from "@pages";
+import {myOrder,effectEx,customOrder,double11,JDdouble11,
+    TaoDouble12
+} from "@pages";
 
 export default [
     {
@@ -46,6 +48,15 @@ export default [
         component: JDdouble11,
         meta: {
             title:'京东双11京享红包'
+        },
+    },
+    {
+        key: "1212",
+        path: "/1212",
+        name: "1212",
+        component: TaoDouble12,
+        meta: {
+            title:'超级红包'
         },
     },
 ]
