@@ -6,13 +6,13 @@ import nativeBridge from './../../utils/nativeBridge'
 import {luckDrawApi} from "./../../api/publicApi"
 import BottomComponent from './../../components/1111/bottom'
 
-const actId = util.getUrlParams(window.location.href).actId ||'1015';  //分享活动id
 const NativeBridge = nativeBridge.getInstance()
+const actId = util.getUrlParams(window.location.href).actId ||'1015';  //分享活动id
 const startTime=new Date('2020/12/8 0:00').getTime()
 const btnText='12月8日0点入口开启'
 const copyText='4￥sWhgcoW26y6￥回t~bao或點҉击҉链节 https://m.tb.cn/h.4UPzJTG 至liulanqi【2020淘宝双12—主会场(每满200减25，更有最高1212红包等你来抢~）】'
 const getRedPacketLink='https://s.click.taobao.com/qjd1ftu';//领红包链接
-const openLotteryLink='https://s.click.taobao.com/oJfmCvu';//开彩蛋链接
+const openLotteryLink='https://s.click.taobao.com/bCxpWtu';//开彩蛋链接
 const ruleList=[
   "1、超级红包活动从12.5日至12.12日，每日可以领取3次双12超级红包，至高1212元；",
   "2、每次首次分享红包口令到微信 QQ 朋友圈，即可获得随机数量易豆，至高1212易豆；",
@@ -32,13 +32,10 @@ const openRaward=(isTimeOut:boolean)=>{//快乐开彩蛋
   if(isTimeOut)util.toTaobaoHandler(openLotteryLink)
 }
 
-
-
-
 const shareEvent=()=> {
   let sharetitle = "在吗？一年一次的双12大促又双叒叕来了， 双12超级红包每日可领！赶紧抢！",
     sharetype = 1,
-    sharecontent = "淘宝天猫双十二超级红包，最高1212元！",
+    sharecontent = "淘宝双十二超级红包，最高1212元！",
     sharepicUrl = "https://egouimg1.qutu.com/m_egou/hd/2019/double11/hb/share.png",
     shareLink = window.location.href.replace('h5.egou.com','h5.qixinban.com')
       
@@ -91,7 +88,7 @@ function Index() {
     current.value = copyText
     current.select();
     document.execCommand('Copy')
-    Toast.success('已复制好，可粘贴',0.5)
+    Toast.success('已复制好，可粘贴',1)
 
     // const range = document.createRange();
     // range.selectNode(current);
@@ -101,15 +98,10 @@ function Index() {
 
     current.style.display='none'; // 将input隐藏
     current.remove(); // 将input销毁
-
     luckDrawApi({actId}).then(data=>{
-      if(data.code==0){
-        if(data.data&&data.data.luckInfo){
+      if(data.code==0&&data.data&&data.data.luckInfo){
           let luckInfo = data.data.luckInfo;
           NativeBridge.handler('showRewardAlert',true,luckInfo)
-        }
-      }else if(data.data){
-        // Toast.info(data.data.msg, 1);
       }
       
     })
@@ -139,7 +131,6 @@ function Index() {
           }
         </RuleWrapper>
       </Modal>
-      <div className='rule' onClick={()=>{setModal(true)}}></div>
       {
         NativeBridge._isEnv?<div className='rule' onClick={()=>{setModal(true)}}></div>:''
       }
