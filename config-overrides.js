@@ -39,6 +39,7 @@ module.exports = override(
         "@store": path.join(__dirname, "./src/store"),
         "@utils": path.join(__dirname, "./src/utils"),
         "@hoc": path.join(__dirname, "./src/hoc"),
+        "@img": path.join(__dirname, "./src/static/img"),
     }),
     //配置装饰器的
     addDecoratorsLegacy()

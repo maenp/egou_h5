@@ -1,10 +1,10 @@
 import React, { useState, useEffect, RefObject } from 'react';
 import { Wrapper ,RuleWrapper } from './styled'
-import util from './../../utils/util'
+import util from '@utils/util'
 import { Modal , Toast} from 'antd-mobile';
-import nativeBridge from './../../utils/nativeBridge'
-import {luckDrawApi} from "./../../api/publicApi"
-import BottomComponent from './../../components/1111/bottom'
+import nativeBridge from '@utils/nativeBridge'
+import {luckDrawApi} from "@api/publicApi"
+import BottomComponent from '@components/1111/bottom'
 
 const NativeBridge = nativeBridge.getInstance()
 const actId = util.getUrlParams(window.location.href).actId ||'1015';  //分享活动id
