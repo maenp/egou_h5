@@ -1,5 +1,5 @@
 import React, { useState, useEffect, RefObject } from 'react';
-import { Wrapper ,RuleWrapper } from './styled'
+import { Wrapper ,RuleWrapper,ActionBtn } from './styled'
 import util from '@utils/util'
 import { Modal , Toast} from 'antd-mobile';
 import nativeBridge from '@utils/nativeBridge'
@@ -9,12 +9,12 @@ import BottomComponent from '@components/1111/bottom'
 const NativeBridge = nativeBridge.getInstance()
 
 const actId = util.getUrlParams(window.location.href).actId ||'1015';  //分享活动id
-const startTime=new Date('2021/1/17 0:00').getTime();
+const startTime=new Date('2020/1/17 0:00').getTime();
 const UnStartBtnText='1月17号开抢';
 const startBtnText='领红包';
-const copyText='4￥sWhgcoW26y6￥回t~bao或點҉击҉链节 https://m.tb.cn/h.4UPzJTG 至liulanqi【2020淘宝双12—主会场(每满200减25，更有最高1212红包等你来抢~）】';
-const getRedPacketLink='https://s.click.taobao.com/qjd1ftu';//领红包链接
-const openLotteryLink='https://s.click.taobao.com/bCxpWtu';//开彩蛋链接
+const copyText='9.0￥7w6qcG6MIo3￥哒楷tἍo宝或點҉击҉url链 https://m.tb.cn/h.4iHdwBl 至浏览er【2021天喵年货节——超级红包主会场（每满300减30，更有超级红包等你来抢）】';
+const getRedPacketLink='https://s.click.taobao.com/4AOx7su';//领红包链接
+const openLotteryLink='https://s.click.taobao.com/Gg7FDsu';//开彩蛋链接
 const ruleList=[
   "1、超级红包活动从1.17日至1.25日，每日可以领取3次年货节超级红包，至高2021元；",
   "2、每次首次分享红包口令到微信 QQ 朋友圈，即可获得随机数量易豆，至高2021易豆；",
@@ -35,9 +35,9 @@ const openRaward=(isTimeOut:boolean)=>{//快乐开彩蛋
 }
 
 const shareEvent=()=> {
-  let sharetitle = "在吗？一年一次的双12大促又双叒叕来了， 双12超级红包每日可领！赶紧抢！",
+  let sharetitle = "2021年开年惊喜派送中...",
     sharetype = 1,
-    sharecontent = "淘宝双十二超级红包，最高1212元！",
+    sharecontent = "淘宝&京东年货大狂欢 最高2021元红包！",
     sharepicUrl = "https://egouimg1.qutu.com/m_egou/hd/2019/double11/hb/share.png",
     shareLink = window.location.href.replace('h5.egou.com','h5.qixinban.com')
       
@@ -70,6 +70,10 @@ function Index() {
   let copyInp: RefObject<HTMLInputElement> = React.createRef()
   let daojishiHandler=()=>{
     let expire=(startTime-new Date().getTime())/1000
+    if(expire<0){
+      setTimeOut(true)
+      return
+    }
     let timer=setInterval(()=>{
       if(expire<0){
         clearInterval(timer)
@@ -133,10 +137,10 @@ function Index() {
       }
       
       <div className='get_btn' onClick={toTaobao}/>
-      <div className='action_btn'>
+      <ActionBtn>
         <div className="action" onClick={copyTextHandler}>{NativeBridge._isEnv?'分享口令赚易豆':'复制口令领取'}</div>
         <div className={isTimeOut?"action":""} onClick={()=>{openRaward(isTimeOut)}}>{isTimeOut?startBtnText:UnStartBtnText}</div>
-      </div>
+      </ActionBtn>
 
       <div className="copyText">{copyText}</div>
       <input className="copyInp" ref={copyInp} type="text"/>

@@ -86,7 +86,7 @@ class customOrder extends Component<{}, customOrderState> {
         })
     }
     toMyOrderHandler=()=>{//去我的订单
-        window.location.href='http://m.egou.com/personal/order.htm'
+        window.location.href='//m.egou.com/personal/order.htm'
     }
     componentDidMount(){
         this.getCustomSectionHandler()

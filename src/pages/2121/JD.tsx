@@ -1,6 +1,6 @@
 /// <reference types="./" />
 import React, { useState, useEffect, RefObject } from 'react';
-import { JD, ToRed } from './styled'
+import { JD, ToRed,ActionBtn} from './styled'
 import util from '@utils/util'
 import BottomComponent from '@components/1111/bottom'
 
@@ -40,7 +40,10 @@ function Index() {
         }
     }
     function toRedHandler() {
-        window.location.href = 'http://union.egou.com/to?site=2&term=2&shop=492767&pos=jdhb_btn&page=jdgonglue&url=https%3A%2F%2Fstory.m.jd.com%2FbabelDiy%2FZeus%2F3GTK33w27TxnCutHJAbrwB5z5zc2%2Findex.html'
+        window.location.href = '//union.egou.com/to?site=2&term=2&shop=492767&pos=jdhb_btn&page=jdgonglue&url=https%3A%2F%2Fstory.m.jd.com%2FbabelDiy%2FZeus%2F2HxATPMr9wQsKhqm3oe7vshuJYDS%2Findex.html'
+    }
+    function toOneHandler() {
+        window.location.href = '//www.eqifa.com/earner/mini/productActivity/coupon/#/jxlj.html/150'
     }
     useEffect(() => {//ditmount
         setInter()
@@ -66,6 +69,10 @@ function Index() {
                     </div>
                 }
             </JD>
+            <ActionBtn style={{top:'9.15rem'}}>
+                <div className="action" onClick={toRedHandler}>京享红包</div>
+                <div className="action" onClick={toOneHandler}>京享1元购</div>
+            </ActionBtn>
             <BottomComponent toTop={true} jumpPath={'/2021'} type="jd"/>
         </>
     );

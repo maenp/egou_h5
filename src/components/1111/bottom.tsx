@@ -38,7 +38,7 @@ function Index(props:IProps) {
         }
     }
     const getoAwardCard = () => {//领取返利卡
-        window.location.href = 'http://union.egou.com/to?site=2&term=2&pos=tqk_btn&page=gonglue&url=http%3A%2F%2Fh5.egou.com%2Fhd%2F2018%2Ftqk%2Findex.html%3Factid%3D5908'
+        window.location.href = '//union.egou.com/to?site=2&term=2&pos=tqk_btn&page=gonglue&url=http%3A%2F%2Fh5.egou.com%2Fhd%2F2018%2Ftqk%2Findex.html%3Factid%3D5908'
     }
     return (
         <BottomC>
