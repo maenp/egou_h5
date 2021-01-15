@@ -1,6 +1,6 @@
-import {myOrder,effectEx,customOrder,double11,JDdouble11,
-    TaoDouble12
-} from "@pages";
+import {
+    myOrder,effectEx,customOrder,awardDetail
+} from "@/pages";
 
 export default [
     {
@@ -33,30 +33,12 @@ export default [
         },
     },
     {
-        key: "1111",
-        path: "/1111",
-        name: "1111",
-        component: double11,
+        key: "/awardDetail",
+        path: "/awardDetail",
+        name: "awardDetail",
+        component: awardDetail,
         meta: {
-            title:'超级红包'
-        },
-    },
-    {
-        key: "JD1111",
-        path: "/JD1111",
-        name: "JD1111",
-        component: JDdouble11,
-        meta: {
-            title:'京东双11京享红包'
-        },
-    },
-    {
-        key: "1212",
-        path: "/1212",
-        name: "1212",
-        component: TaoDouble12,
-        meta: {
-            title:'超级红包'
+            title:'返利详情'
         },
     },
 ]

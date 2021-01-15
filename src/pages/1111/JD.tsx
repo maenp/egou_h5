@@ -93,7 +93,7 @@ function Index(props:IProps) {
                     }
                 </JD>
             </div>
-            <BottomComponent isToTop={isToTop} toTopHandler={toTopHandler} jumpPath={'/1111'} type="jd"/>
+            <BottomComponent toTop={true} toTopHandler={toTopHandler} jumpPath={'/1111'} type="jd"/>
         </>
     );
 }

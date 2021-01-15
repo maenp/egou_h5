@@ -20,10 +20,22 @@ interface Window{
         nativeMethod:string
         param:any
     }
-
+    shareEvent:Function 
     nativeExpressRewardedVideoAdDidClose:any
     Callback:Function
     eruda:{
         init:Function
     }
+}
+
+
+interface IRoute{
+    key: string;
+    path: string;
+    name: string;
+    component: (React.ComponentClass<{}, any> & LoadableExport.LoadableComponent) | (React.FunctionComponent<{}> & LoadableExport.LoadableComponent);
+    meta: {
+        
+    };
+    children: IRoute[];
 }

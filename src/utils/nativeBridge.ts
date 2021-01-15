@@ -35,25 +35,33 @@ class NativeBridge {
         let device = this.device
         
         if (device === 3) {//安卓/UI内核ios
-            if (oldParam) {
-                if (!(oldParam instanceof Array)) {
-                    throw new Error('oldParam 参数应该是一个数组！！！');
+            try {
+                if (oldParam) {
+                    if (!(oldParam instanceof Array)) {
+                        throw new Error('oldParam 参数应该是一个数组！！！');
+                    }
+                    return window.locJs[nativeMethod](...oldParam);
+                } else if (param) {
+                    if (typeof param !== 'string') param = JSON.stringify(param)
+                    return window.locJs[nativeMethod](param);
+                } else {
+                    return window.locJs[nativeMethod]();
                 }
-                return window.locJs[nativeMethod](...oldParam);
-            } else if (param) {
-                if (typeof param !== 'string') param = JSON.stringify(param)
-                return window.locJs[nativeMethod](param);
-            } else {
-                return window.locJs[nativeMethod]();
+            } catch (error) {
+                
             }
         } else {//WK内核ios
             let identifier = new Date().getTime().toString().slice(-6) //传给wk的标识符，在wk回调时会返回这个标识符，用来防止多次调用冲突，一般不用
             if (isCallback) {//异步调用
-                window.webkit.messageHandlers[nativeMethod].postMessage({
-                    data: param,
-                    identifier
-                });
-                return identifier
+                try {
+                    window.webkit.messageHandlers[nativeMethod].postMessage({
+                        data: param,
+                        identifier
+                    });
+                    return identifier
+                } catch (error) {
+                    console.log('ios找不到'+nativeMethod,JSON.stringify(error));
+                }
             } else {
                 return window.prompt(nativeMethod, param);
             }

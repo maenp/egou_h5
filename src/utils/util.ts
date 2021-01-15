@@ -1,6 +1,6 @@
-import {isTaobaoBindApi,btnEventApi} from './../api/publicApi'
-import nativeBridge from './nativeBridge'
-import store from './../store'
+import {isTaobaoBindApi,btnEventApi} from '@/api/publicApi'
+import nativeBridge from '@/utils/nativeBridge'
+import store from '@/store'
 const NativeBridge = nativeBridge.getInstance()
 let user=store.getState().user
 export default {
@@ -49,7 +49,7 @@ export default {
         return obj
     },
 
-    loadImage(imgs) {//图片的预加载  入参String[], 返回imgElement[]
+    loadImage(imgs:string[]) {//图片的预加载  入参String[], 返回imgElement[]
         return new Promise((resolve, reject) => {
             let img = new Image();//新建一个图片标签
             let arr = []
@@ -75,7 +75,7 @@ export default {
      * ImageHtml元素需要有标签属性 data-src:真实图片地址
      * @loadImgs ImageHtml[]
      */
-    lazyLoadImage(loadImgs) {//图片懒加载
+    lazyLoadImage(loadImgs:HTMLImageElement[]) {//图片懒加载
         let H = document.documentElement.clientHeight;//获取可视区域高度
         // let S = document.documentElement.scrollTop || document.body.scrollTop;
         for (let i = 0; i < loadImgs.length; i++) {//循环所有的图片，根据位置判断是否加载
@@ -84,8 +84,9 @@ export default {
             // console.log(H,S,imgBoundingClientRect)
             let viewBottom = H + imgBoundingClientRect.height > imgBoundingClientRect.top //用来判断可视区域下面的图片是否显示  加了H是为了向下多加载一张图片
             let viewTop = (imgBoundingClientRect.bottom + imgBoundingClientRect.height) > 0 //用来判断可视区域上面的图片是否显示
-            if (viewBottom && viewTop) {
-                img.src = img.getAttribute('data-src');
+            let dataSrc=img.getAttribute('data-src')
+            if (viewBottom && viewTop && dataSrc) {
+                img.src = dataSrc;
             } else if (!viewBottom) {//判断到下面时就不用判断了，这里还可以优化->如何减少上面的判断
                 return
             }
@@ -151,6 +152,14 @@ export default {
         
     },
     toTopHandler(that:Element,time:number){//回到顶部
+        let userInfo=user.toJS()
+        console.log(userInfo.term);
+        
+        if(userInfo.term===3){
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+            return
+        }
         let currentScroll = that.scrollTop
         let speed=currentScroll/(time/60)
         let IInterval = setInterval(_=>{
@@ -176,7 +185,6 @@ export default {
         return date.toLocaleDateString().replace(/\//g, rep);
     },
     btnEvent(page:string,pos:string){//按钮埋点
-        //@ts-ignore
         let userInfo=user.toJS()
         let data={
             method:"click.data.generate",
