@@ -1,6 +1,6 @@
 import {fetch as fetchPro} from "whatwg-fetch"
 import qs from "qs"
-import store from '@store'
+import store from '@/store'
 // import {USER} from "@actions/test";
 // store.dispatch(USER)//更新请求的公共参数
 let user=store.getState().user.toJS()
@@ -12,7 +12,7 @@ let defaultParams = { //设置默认参数
     chn:'',
 };
 console.log(defaultParams,'store')
-export const get=(url, data)=>{
+export const get=(url:string, data:object)=>{
     if(data){
         let str="";
         for(let key in data){
@@ -28,7 +28,7 @@ export const get=(url, data)=>{
     }).then(res=>res.json)
 
 };
-export const post=(url,data)=>{
+export const post=(url:string,data:object)=>{
     return fetchPro(url,{
         method:'POST',
         credentials:'include',
@@ -39,7 +39,7 @@ export const post=(url,data)=>{
     }).then(res=>res.json())
 };
 
-export const egouGet=(method,data)=>{
+export const egouGet=(method:string,data)=>{
     let url="https://m.egou.com/api/rest.htm"
     data = Object.assign({...defaultParams},data);
     data.method=method
@@ -58,7 +58,7 @@ export const egouGet=(method,data)=>{
 
 };
 
-export const jsonp = (url) => {
+export const jsonp = (url:string) => {
     if(!url){
         console.error('JSONP 至少需要一个url参数!')
         return;
