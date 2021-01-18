@@ -153,6 +153,7 @@ export const ActionBtn = styled.div`
     border-radius: 20px;
     color:#FEF1B0;
     font-size:0.26667rem;
+    letter-spacing:1px;
     
     border: 2px solid #FDF1B0;
     border-radius: 20px;

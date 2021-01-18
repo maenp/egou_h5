@@ -40,10 +40,10 @@ function Index() {
         }
     }
     function toRedHandler() {
-        window.location.href = '//union.egou.com/to?site=2&term=2&shop=492767&pos=jdhb_btn&page=jdgonglue&url=https%3A%2F%2Fstory.m.jd.com%2FbabelDiy%2FZeus%2F2HxATPMr9wQsKhqm3oe7vshuJYDS%2Findex.html'
+        window.location.href = '//union.egou.com/to?site=2&term=2&shop=492767&pos=jdhb_btn&page=jdgonglue&url=https%3A%2F%2Fstory.m.jd.com%2FbabelDiy%2FZeus%2F2HxATPMr9wQsKhqm3oe7vshuJYDS%2Findex.html';
     }
     function toOneHandler() {
-        window.location.href = '//www.eqifa.com/earner/mini/productActivity/coupon/#/jxlj.html/150'
+        window.location.href = '//www.eqifa.com/earner/mini/productActivity/coupon/#/jxlj.html/150';
     }
     useEffect(() => {//ditmount
         setInter()

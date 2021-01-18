@@ -6,12 +6,12 @@ import nativeBridge from '@utils/nativeBridge'
 import {luckDrawApi} from "@api/publicApi"
 import BottomComponent from '@components/1111/bottom'
 
-const NativeBridge = nativeBridge.getInstance()
+const NativeBridge = nativeBridge.getInstance();
 
 const actId = util.getUrlParams(window.location.href).actId ||'1015';  //分享活动id
 const startTime=new Date('2020/1/17 0:00').getTime();
 const UnStartBtnText='1月17号开抢';
-const startBtnText='领红包';
+const startBtnText='限量1元购';
 const copyText='9.0￥7w6qcG6MIo3￥哒楷tἍo宝或點҉击҉url链 https://m.tb.cn/h.4iHdwBl 至浏览er【2021天喵年货节——超级红包主会场（每满300减30，更有超级红包等你来抢）】';
 const getRedPacketLink='https://s.click.taobao.com/4AOx7su';//领红包链接
 const openLotteryLink='https://s.click.taobao.com/Gg7FDsu';//开彩蛋链接
